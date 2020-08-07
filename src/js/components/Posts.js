@@ -3,13 +3,8 @@ import { connect } from "react-redux";
 import { getData } from "../actions/index";
 
 export class Post extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
-        // calling the new action creator
-        this.props.getData();
+        this.props.getData("https://api.valentinog.com/api/link/");
     }
 
     render() {
@@ -22,13 +17,11 @@ export class Post extends Component {
         );
     }
 }
+
 function mapStateToProps(state) {
     return {
         articles: state.remoteArticles.slice(0, 10)
     };
 }
 
-export default connect(
-    mapStateToProps,
-    { getData }
-)(Post);
+export default connect(mapStateToProps, { getData })(Post);

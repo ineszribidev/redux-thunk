@@ -16,6 +16,11 @@ function rootReducer(state = initialState, action) {
             remoteArticles: state.remoteArticles.concat(action.payload)
         });
     }
+    if (action.type === "API_ERRORED") {
+        return Object.assign({}, state, {
+            remoteArticles: state.remoteArticles.concat(action.payload)
+        });
+    }
     return state;
 }
 
